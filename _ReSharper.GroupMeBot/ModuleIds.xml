@@ -1,5 +1,4 @@
 <Modules>
-  <Module PersistentId="D37B3E45-43B8-40B7-A3CF-A53D6041ADBD" ModuleId="GroupMeBot" />
-  <Module PersistentId="3F61D50B-D503-4B52-8208-1EF4450025CB" ModuleId="GroupMeBot.Site" />
   <Module PersistentId="B4614BD2-7B32-413D-AB72-CCCD455B22C4" ModuleId="KeBot.Site" />
+  <Module PersistentId="CA084A4A-B4EE-4352-8786-2CB5C9852D8D" ModuleId="KeBot.Service" />
 </Modules>

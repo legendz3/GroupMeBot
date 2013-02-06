@@ -3,14 +3,12 @@
     <string />
     <integer />
     <boolean>
+      <setting name="livetemplates.csharp.usevar">False</setting>
       <setting name="SolutionAnalysisEnabled">False</setting>
     </boolean>
   </SettingsComponent>
   <RecentFiles>
-    <RecentFiles>
-      <File id="B4614BD2-7B32-413D-AB72-CCCD455B22C4/d:Controllers/f:ReceiveController.cs" caret="0" fromTop="0" />
-      <File id="B4614BD2-7B32-413D-AB72-CCCD455B22C4/f:Global.asax.cs" caret="801" fromTop="24" />
-    </RecentFiles>
+    <RecentFiles />
     <RecentEdits />
   </RecentFiles>
   <NAntValidationSettings>
@@ -24,4 +22,125 @@
     </NUnitInstallDir>
     <UseAddins>Never</UseAddins>
   </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="MainBot`0" priority="0" />
+      <Item value="new" priority="12" />
+      <Item value="MainBot" priority="0" />
+      <Item value="bot" priority="2" />
+      <Item value="public" priority="3" />
+      <Item value="ActionResult`0" priority="0" />
+      <Item value="EnvironmentVariableTarget`0" priority="1" />
+      <Item value="string" priority="12" />
+      <Item value="while" priority="0" />
+      <Item value="true" priority="0" />
+      <Item value="ExecutionEngineException`0" priority="0" />
+      <Item value="line" priority="8" />
+      <Item value="if" priority="14" />
+      <Item value="return" priority="15" />
+      <Item value="Console`0" priority="0" />
+      <Item value="content" priority="1" />
+      <Item value="View`0" priority="0" />
+      <Item value="RestRequest" priority="1" />
+      <Item value="request" priority="4" />
+      <Item value="else" priority="2" />
+      <Item value="_groupId" priority="1" />
+      <Item value="var" priority="7" />
+      <Item value="Guid`0" priority="0" />
+      <Item value="Json" priority="0" />
+      <Item value="Method`0" priority="0" />
+      <Item value="private" priority="2" />
+      <Item value="const" priority="0" />
+      <Item value="_botId" priority="0" />
+      <Item value="sender" priority="0" />
+      <Item value="e" priority="0" />
+      <Item value="_lastMessageId" priority="3" />
+      <Item value="foreach" priority="1" />
+      <Item value="message" priority="1" />
+      <Item value="int" priority="0" />
+      <Item value="i" priority="0" />
+      <Item value="DynamicJson`0" priority="0" />
+      <Item value="result" priority="0" />
+      <Item value="BotEngine" priority="0" />
+      <Item value="class" priority="0" />
+      <Item value="BotEngine`0" priority="3" />
+      <Item value="botEngine" priority="1" />
+      <Item value="returns" priority="3" />
+      <Item value="RestRequest`0" priority="0" />
+      <Item value="input" priority="8" />
+      <Item value="GET" priority="0" />
+      <Item value="kernel" priority="0" />
+      <Item value="StringBuilder" priority="0" />
+      <Item value="builder" priority="2" />
+      <Item value="Ninject" priority="0" />
+      <Item value="Bind`0" priority="0" />
+      <Item value="IBot`0" priority="4" />
+      <Item value="null" priority="3" />
+      <Item value="FuckDongBot`0" priority="0" />
+      <Item value="Search`0" priority="0" />
+      <Item value="results" priority="3" />
+      <Item value="try" priority="0" />
+      <Item value="exception" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="ToLower`0" priority="10" />
+      <Item value="Contains`0" priority="6" />
+      <Item value="Remove`0" priority="0" />
+      <Item value="IndexOf`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Console">
+      <Item value="WriteLine`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:RestSharp.RestRequest">
+      <Item value="AddHeader`0" priority="0" />
+      <Item value="AddBody`0" priority="1" />
+      <Item value="RequestFormat" priority="0" />
+      <Item value="Resource" priority="0" />
+      <Item value="Method" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@RestSharp.Method">
+      <Item value="GET" priority="1" />
+      <Item value="POST" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Guid">
+      <Item value="NewGuid`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Empty" priority="3" />
+      <Item value="IsNullOrEmpty`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Codeplex.Data.DynamicJson">
+      <Item value="Parse`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Linq.Enumerable">
+      <Item value="Select`2" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:KeBot.Service.BotEngine">
+      <Item value="Process`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Ninject.StandardKernel">
+      <Item value="GetAll`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.StringBuilder">
+      <Item value="AppendLine`0" priority="2" />
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:KeBot.Service.IBot">
+      <Item value="Process`0" priority="0" />
+      <Item value="ToString`0" priority="0" />
+      <Item value="GetType`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Ninject.Syntax.IBindingToSyntax`1">
+      <Item value="To`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Count" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.KeyValuePair`2">
+      <Item value="Value" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Type">
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
 </Configuration>
