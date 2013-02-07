@@ -15,6 +15,7 @@ namespace KeBot.Service
             Bind<IBot>().To<FuckDongBot>();
             Bind<IBot>().To<UrbanDictionaryBot>();
             Bind<IBot>().To<HotpotBud>();
+            Bind<IBot>().To<KbbqBud>();
         }
     }
 }
