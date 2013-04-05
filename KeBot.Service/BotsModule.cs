@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using KeBot.Service.Bots;
+using KeBot.Service.Bots.CheckinBot;
 using Ninject.Modules;
 
 namespace KeBot.Service
@@ -11,11 +12,12 @@ namespace KeBot.Service
     {
         public override void Load()
         {
-            Bind<IBot>().To<DongBot>();
-            Bind<IBot>().To<FuckDongBot>();
-            Bind<IBot>().To<UrbanDictionaryBot>();
-            Bind<IBot>().To<HotpotBud>();
-            Bind<IBot>().To<KbbqBud>();
+            //Bind<IBot>().To<DongBot>();
+            //Bind<IBot>().To<FuckDongBot>();
+            //Bind<IBot>().To<UrbanDictionaryBot>();
+            //Bind<IBot>().To<HotpotBud>();
+            Bind<IBot>().To<CheckinBot>();
+            Bind(typeof(IRepository<>)).To(typeof(BotsRepository<>));
         }
     }
 }

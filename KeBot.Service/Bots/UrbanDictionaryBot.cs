@@ -30,12 +30,13 @@ namespace KeBot.Service.Bots
 
             return ret;
         }
-        public string Process(string input)
+        public string Process(dynamic input)
         {
-            if (input.ToLower().Contains(".ud"))
+            string t = input.text;
+            if (t.ToLower().Contains(".ud"))
             {
-                input = input.Remove(input.ToLower().IndexOf(".ud"), 4);
-                var results = Search(input);
+                t = t.Remove(t.ToLower().IndexOf(".ud"), 4);
+                var results = Search(t);
                 if (results.Count > 0)
                 {
                     var value = string.Concat(results[0].Key, " : ",  

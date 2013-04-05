@@ -49,6 +49,12 @@
     <Reference Include="DotNetOpenAuth.OAuth2.ClientAuthorization">
       <HintPath>..\packages\DotNetOpenAuth.OAuth2.ClientAuthorization.4.2.1.13026\lib\net40-full\DotNetOpenAuth.OAuth2.ClientAuthorization.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.8.0\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.8.0\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net40\Ninject.dll</HintPath>
     </Reference>
@@ -74,6 +80,8 @@
   <ItemGroup>
     <Compile Include="BotEngine.cs" />
     <Compile Include="BotsModule.cs" />
+    <Compile Include="Bots\BotsRepository.cs" />
+    <Compile Include="Bots\CheckinBot\CheckinBot.cs" />
     <Compile Include="Bots\DongBot.cs" />
     <Compile Include="Bots\FuckDongBot.cs" />
     <Compile Include="Bots\HotpotBot.cs" />
@@ -84,6 +92,7 @@
     <Compile Include="KeBot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\DateTimeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

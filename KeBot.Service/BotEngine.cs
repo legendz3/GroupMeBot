@@ -14,17 +14,17 @@ namespace KeBot.Service
             _kernel = kernel;
         }
 
-        public string Process(string input)
+        public string Process(dynamic input)
         {
-            if (string.IsNullOrEmpty(input))
+            if (ReferenceEquals(null, input))
                 return null;
             var bots = _kernel.GetAll<IBot>();
             StringBuilder builder = new StringBuilder();
-            Parallel.ForEach<IBot>(bots, async bot => builder.Append(await ProccessInternal(input, bot)));
+            Parallel.ForEach<IBot>(bots, async bot => builder.Append((string)await ProccessInternal(input, bot)));
             return builder.ToString();
         }
 
-        private async Task<string> ProccessInternal(string input, IBot bot)
+        private async Task<string> ProccessInternal(dynamic input, IBot bot)
         {
             string result = string.Empty;
 
@@ -34,8 +34,7 @@ namespace KeBot.Service
             }
             catch (Exception exception)
             {
-
-                return "Error running moduel " + bot.GetType() + " : " + exception;
+                Console.WriteLine("Error running moduel " + bot.GetType() + " : " + exception);
             }
 
             return result;
@@ -44,6 +43,6 @@ namespace KeBot.Service
 
     internal interface IBot
     {
-        string Process(string input);
+        string Process(dynamic input);
     }
 }

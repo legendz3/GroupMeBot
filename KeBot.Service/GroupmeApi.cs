@@ -70,7 +70,7 @@ namespace KeBot.Service
             {
                 parameters.Add("since_id", lastMessageId);
             }
-            var result = SendJsonRequest("/groups/" + groupId + "/messages/", Method.GET, parameters: parameters, version: ApiVersion.V2);
+            var result = SendJsonRequest("/groups/" + groupId + "/messages/", Method.GET, parameters: parameters, version: ApiVersion.V3);
 
             if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.NotModified)
             {

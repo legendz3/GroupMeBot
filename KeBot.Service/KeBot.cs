@@ -73,18 +73,28 @@ namespace KeBot.Service
                 return;
             dynamic result = DynamicJson.Parse(content);
             bool firstMessage = true;
-            foreach (var message in result.response.messages)
+            if (string.IsNullOrEmpty(_lastMessageId))
             {
-                if (firstMessage)
+                foreach (var message in result.response.messages)
                 {
                     _lastMessageId = message.id;
-                    firstMessage = false;
                 }
-                var returns = _engine.Process(message.text);
-                if (!string.IsNullOrEmpty(returns))
+            }
+            else
+            {
+                foreach (var message in result.response.messages)
                 {
-                    var response =  _api.BotPost(botId, returns);
-                    Console.WriteLine(response);
+                    if (firstMessage)
+                    {
+                        _lastMessageId = message.id;
+                        firstMessage = false;
+                    }
+                    var returns = _engine.Process(message);
+                    if (!string.IsNullOrEmpty(returns))
+                    {
+                        var response = _api.BotPost(botId, returns);
+                        Console.WriteLine(response);
+                    }
                 }
             }
         }

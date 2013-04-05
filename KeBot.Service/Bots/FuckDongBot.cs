@@ -2,9 +2,10 @@
 {
     public class FuckDongBot : IBot
     {
-        public string Process(string input)
+        public string Process(dynamic input)
         {
-            if (input.ToLower().Contains("dongbot") && !input.ToLower().Contains("fuck dongbot"))
+            string t = input.text;
+            if (t.ToLower().Contains("dongbot") && !t.ToLower().Contains("fuck dongbot"))
                 return "fuck dongbot";
             return null;
         }

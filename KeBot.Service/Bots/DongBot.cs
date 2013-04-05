@@ -2,9 +2,9 @@
 {
     public class DongBot : IBot
     {
-        public string Process(string input)
+        public string Process(dynamic input)
         {
-            if (input == "ding")
+            if (input.text == "ding")
                 return "dong";
             return null;
         }
