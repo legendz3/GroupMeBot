@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
+using System.Text;
 using RestSharp;
 
 namespace KeBot.Service
@@ -82,17 +83,39 @@ namespace KeBot.Service
 
         public string BotPost(string botId, string message)
         {
-            var input = new
-                            {
-                                bot_id = botId,
-                                text = message
-                            };
-            var result = SendJsonRequest("/bots/post", Method.POST, body: input, version: ApiVersion.V3);
-            if (result.StatusCode != HttpStatusCode.Accepted)
+            var returnString = new StringBuilder();
+            const int maxLength = 450;
+            var messages = new List<string>();
+            if (message.Length > maxLength)
             {
-                throw new Exception("Error in creating bot message: " + result.Content);
+                int newStart = 0;
+                while (newStart < message.Length)
+                {
+                    int closestLineBreak = message.Substring(newStart, maxLength < (message.Length - newStart) ? maxLength : (message.Length - newStart)).LastIndexOf(Environment.NewLine, StringComparison.Ordinal);
+                    messages.Add(message.Substring(newStart, closestLineBreak));
+                    newStart = newStart + closestLineBreak+ Environment.NewLine.Length;
+                }
             }
-            return result.Content;
+            else
+            {
+                messages.Add(message);
+            }
+
+            foreach (string s in messages)
+            {
+                var input = new
+                {
+                    bot_id = botId,
+                    text = s
+                };
+                var result = SendJsonRequest("/bots/post", Method.POST, body: input, version: ApiVersion.V3);
+                if (result.StatusCode != HttpStatusCode.Accepted)
+                {
+                    throw new Exception("Error in creating bot message: " + result.Content);
+                }
+                returnString.AppendLine(result.Content);
+            }
+            return returnString.ToString();
         }
 
         private RestResponse SendJsonRequest(string resource, Method method, object body = null, Dictionary<string, object> parameters = null, ApiVersion? version = null)

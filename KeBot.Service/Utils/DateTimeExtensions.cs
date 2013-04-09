@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Remoting.Messaging;
 
 namespace KeBot.Service.Utils
 {
@@ -65,6 +66,15 @@ namespace KeBot.Service.Utils
             }
             int years = Convert.ToInt32(Math.Floor((double)ts.Days / 365));
             return years <= 1 ? "one year ago" : years + " years ago";
+        }
+
+        public static bool MoreThanXHoursAgo(this DateTime date, int hour)
+        {
+            var ts = new TimeSpan(DateTime.UtcNow.Ticks - date.Ticks);
+            double delta = Math.Abs(ts.TotalHours);
+            if (delta > hour)
+                return true;
+            return false;
         }
     }
 }

@@ -17,6 +17,7 @@ namespace KeBot.Service
             //Bind<IBot>().To<UrbanDictionaryBot>();
             //Bind<IBot>().To<HotpotBud>();
             Bind<IBot>().To<CheckinBot>();
+            Bind<IBot>().To<RemoteControlBot>();
             Bind(typeof(IRepository<>)).To(typeof(BotsRepository<>));
         }
     }

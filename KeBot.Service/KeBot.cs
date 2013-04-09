@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading;
 using System.Timers;
 using Codeplex.Data;
+using KeBot.Service.Utils;
 using Ninject;
 using Timer = System.Timers.Timer;
 
@@ -14,10 +15,13 @@ namespace KeBot.Service
         private GroupmeApi _api;
         private BotEngine _engine;
         private string _lastMessageId;
+        private long _lastMessageDateTime;
+        public static bool Run;
         public KeBot(IKernel kernel)
         {
             _api = new GroupmeApi();
             _engine = new BotEngine(kernel);
+            Run = true;
         }
         public void Execute(string line)
         {
@@ -46,7 +50,7 @@ namespace KeBot.Service
                 }
               
                 var timer = new Timer();
-                timer.Elapsed += new ElapsedEventHandler((sender, e) => OurTimerCallback(sender, e, command[1], command[2]));
+                timer.Elapsed += (sender, e) => OurTimerCallback(sender, e, command[1], command[2]);
                 timer.Interval = int.Parse(ConfigurationManager.AppSettings.Get("pull_interval"));
                 timer.Enabled = true;
 
@@ -68,31 +72,39 @@ namespace KeBot.Service
 
         public void OurTimerCallback(object source, ElapsedEventArgs e, string groupId, string botId)
         {
+            if(!Run)
+                return;
             var content = _api.GetMessages(groupId, _lastMessageId);
             if (string.IsNullOrEmpty(content))
                 return;
             dynamic result = DynamicJson.Parse(content);
-            bool firstMessage = true;
             if (string.IsNullOrEmpty(_lastMessageId))
             {
                 foreach (var message in result.response.messages)
                 {
-                    _lastMessageId = message.id;
+                    if ((long) message.created_at > _lastMessageDateTime)
+                    {
+                        _lastMessageDateTime = (long) message.created_at;
+                        _lastMessageId = message.id;
+                    }
                 }
             }
             else
             {
                 foreach (var message in result.response.messages)
                 {
-                    if (firstMessage)
+                    if ((long)message.created_at > _lastMessageDateTime)
                     {
+                        _lastMessageDateTime = (long)message.created_at;
                         _lastMessageId = message.id;
-                        firstMessage = false;
                     }
-                    var returns = _engine.Process(message);
+                    string returns = string.Empty;
+                    if (!string.IsNullOrEmpty(message.user_id))
+                        returns = _engine.Process(message);
                     if (!string.IsNullOrEmpty(returns))
                     {
                         var response = _api.BotPost(botId, returns);
+                        Console.WriteLine(returns);
                         Console.WriteLine(response);
                     }
                 }
@@ -102,12 +114,14 @@ namespace KeBot.Service
         public static void CheckForExitKey()
         {
             ConsoleKeyInfo cki = new ConsoleKeyInfo();
-            while (true)
+            while (true
+                )
             {
                 while (Console.KeyAvailable == false)
                     Thread.Sleep(250); 
                 cki = Console.ReadKey(true);
                 if (cki.Key == ConsoleKey.X) break;
+                
             }
         }
     }

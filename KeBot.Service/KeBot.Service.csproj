@@ -86,6 +86,7 @@
     <Compile Include="Bots\FuckDongBot.cs" />
     <Compile Include="Bots\HotpotBot.cs" />
     <Compile Include="Bots\KbbqBud.cs" />
+    <Compile Include="Bots\RemoteControlBot.cs" />
     <Compile Include="Bots\UrbanDictionaryBot.cs" />
     <Compile Include="DynamicJson.cs" />
     <Compile Include="GroupmeApi.cs" />
